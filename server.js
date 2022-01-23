@@ -10,6 +10,7 @@ const expressLayouts = require('express-ejs-layouts') // npm i express ejs expre
 
 // Import router - Phase 2
 const indexRouter = require('./routes/index')
+const authorRouter = require('./routes/authors')
 
 // Set view engine - Phase 1
 app.set('view engine', 'ejs') // setup to use ejs as view engine
@@ -29,6 +30,7 @@ db.once('open', () => console.log('Connected to Mongoose database'))
 
 // Use router - Phase 2
 app.use('/', indexRouter) // call on router in router/index.js
+app.use('/authors', authorRouter)
 
 
 // Listen - Phase 1
