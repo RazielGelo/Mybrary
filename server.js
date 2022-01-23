@@ -7,6 +7,7 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts') // npm i express ejs express-ejs-layouts
+const bodyParser = require('body-parser')
 
 // Import router - Phase 2
 const indexRouter = require('./routes/index')
@@ -18,6 +19,7 @@ app.set('views', __dirname + '/views') // set directory
 app.set('layout', 'layouts/layout' ) // this is underneath views directory
 app.use(expressLayouts)
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
 
 // Database setup - Phase 3
 const mongoose = require('mongoose') // import from npm i mongoose
